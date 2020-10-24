@@ -1,4 +1,7 @@
-# clear screen print “\e[2J\e[f”
+def clear_screen ()    #clear screen only in Visual Studio Code
+    print "\e[2J\e[f"
+end
+
 def opc_invalid (opc)
     !((opc >= 1) && (opc <= 4))
 end
@@ -28,6 +31,22 @@ puts "4. Salir"
 
 end
 
+def winner (opc_p1,opc_p2)
+
+    if (opc_p1 == opc_p2)
+        0
+    else
+        piedra = (opc_p1 == 1 && opc_p2 == 3)
+        papel = (opc_p1 == 2 && opc_p2 == 1)
+        tijera = (opc_p1 == 3 && opc_p2 == 2)
+
+        if (piedra || papel || tijera)
+            1
+        else
+            2
+        end
+    end
+end
 
 
 
@@ -162,8 +181,10 @@ current_player = 1
 end_game = false
 close_menu = false
 
+#Menu & Validation 
+
 while ((opc_invalid(opc_player_1) || opc_invalid(opc_player_2)) && (!close_menu) && (!end_game))
-    print "\e[2J\e[f"    #clear screen only in Visual Studio Code
+    clear_screen()
 
     show_menu (current_player)
     current_opc = gets.to_i
@@ -178,8 +199,10 @@ while ((opc_invalid(opc_player_1) || opc_invalid(opc_player_2)) && (!close_menu)
             opc_player_2 = current_opc
             close_menu  = true
         else                               #Esto nunca deberia pasar
-            print "\e[2J\e[f"
+            clear_screen()
             current_player = 1
         end
     end
 end
+
+puts winner(opc_player_1,opc_player_2)
