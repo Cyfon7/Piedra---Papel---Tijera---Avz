@@ -48,7 +48,7 @@ def print_winner ()
     puts "\t\t"+'|   / \   |   __|  |__   |  | \    |  |  | \    |  |   |____   |  | \  \ '
     puts "\t\t"+'|__/   \__|  |________|  |__|  \___|  |__|  \___|  |________|  |__|  \__\ ' 
 
-    print "\n\n"
+    print "\n"
 end
 
 def print_player (player)
@@ -69,7 +69,7 @@ def print_player (player)
         puts "\t\t\t\t\t"+'|__|          2222222'
     end
 
-    print "\n\n\n"
+    print "\n"
 end
 
 def print_tie ()
@@ -81,7 +81,7 @@ def print_tie ()
     puts "\t\t\t\t"+'   |  |      __|  |__   |   |____  '
     puts "\t\t\t\t"+'   |__|     |________|  |________| ' 
 
-    print "\n\n"
+    print "\n"
 end
 
 def print_rps ()
@@ -169,6 +169,7 @@ while ((opc_invalid(opc_player_1) || opc_invalid(opc_player_2)) && (!close_menu)
     clear_screen()
 
     show_menu(current_player,show_invalid)       #Muestra Menu
+    print "\n\t\t\t\t\t\tTu Opcion = "
     current_opc = gets.to_i
 
     if (!opc_invalid(current_opc))               #Opcion es Valida
@@ -200,6 +201,8 @@ if !end_game
     else
         show_winner(result)
     end
+    print_icons()
+else
+    clear_screen()
+    print_icons()
 end
-
-print_icons()
